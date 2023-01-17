@@ -19,11 +19,6 @@ public class AddNewUserCommandHandler : IRequestHandler<AddNewUserCommand, strin
 
     public async Task<string> Handle(AddNewUserCommand request, CancellationToken cancellationToken)
     {
-        await _mediator.Send(new SessionValidationQuery()
-        {
-            SessionId = request.SesionId
-        }, cancellationToken);
-        
         var userId = Guid.NewGuid();
         var newUser = new User()
         {

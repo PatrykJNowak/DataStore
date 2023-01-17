@@ -8,5 +8,4 @@ public class AddNewUserCommand : IRequest<string>
     public string SurName { get; set; }
     public string Login { get; set; }
     public string Password { get; set; }
-    public Guid SesionId { get; set; }
 }

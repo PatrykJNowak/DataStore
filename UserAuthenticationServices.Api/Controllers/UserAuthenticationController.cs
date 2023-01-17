@@ -27,7 +27,6 @@ public class UserAuthenticationController : ControllerBase
     [HttpPost("AddNewUser")]
     public async Task<string> CreatNewUser(
         [FromServices] IMediator mediator,
-        [FromQuery] Guid sessionId,
         [FromQuery] string name,
         [FromQuery] string surName,
         [FromQuery] string login,
@@ -35,7 +34,6 @@ public class UserAuthenticationController : ControllerBase
     {
         var result = mediator.Send(new AddNewUserCommand()
         {
-            SesionId = sessionId,
             Name = name,
             SurName = surName,
             Login = login,

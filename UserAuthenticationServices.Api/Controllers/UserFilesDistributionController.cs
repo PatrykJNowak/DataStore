@@ -18,7 +18,6 @@ public class UserFilesDistributionController : ControllerBase
         [FromServices] IMediator mediator,
         [FromQuery] Guid sessionId,
         [FromQuery] Guid userId,
-        [FromBody] string description,
         IFormFile file,
         CancellationToken cancellationToken)
     {
@@ -26,7 +25,6 @@ public class UserFilesDistributionController : ControllerBase
         {
             SessionId = sessionId,
             UserId = userId,
-            Description = description,
             FileContent = file
         }, cancellationToken);
         return await result;
