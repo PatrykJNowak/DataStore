@@ -1,5 +1,6 @@
+using System.Reflection;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
-using UserAuthenticationServices.Domain;
 using UserAuthenticationServices.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,9 +11,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddDbContext<DatabaseContext>(
     o => o.UseNpgsql(builder.Configuration.GetConnectionString("UA")));
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -19,7 +19,22 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
         builder.Property(x => x.Name)
             .IsRequired();
 
+        builder.Property(x => x.UserLevel)
+            .IsRequired();
+        
         builder.Property(x => x.SurName)
             .IsRequired();
+
+        builder.HasMany(x => x.UserAuthentication)
+            .WithOne(x => x.User)
+            .HasForeignKey(x => x.UserId);
+        
+        builder.HasMany(x => x.UserSessions)
+            .WithOne(x => x.User)
+            .HasForeignKey(x => x.UserId);
+        
+        builder.HasMany(x => x.UserContentFiles)
+            .WithOne(x => x.User)
+            .HasForeignKey(x => x.UserId);
     }
 }

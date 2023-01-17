@@ -1,9 +1,14 @@
-﻿namespace UserAuthenticationServices.Domain.Entity;
+﻿using System.Globalization;
 
-public class User 
+namespace UserAuthenticationServices.Domain.Entity;
+
+public class User
 {
     public Guid UserId { get; set; }
     public string Name { get; set; }
     public string SurName { get; set; }
-    public virtual ICollection<UserAuthorization> UserAuthorizations { get; set; }
+    public string UserLevel { get; set; }
+    public virtual ICollection<UserContentFiles> UserContentFiles { get; set; }
+    public virtual ICollection<UserAuthentication> UserAuthentication { get; set; }
+    public virtual ICollection<UserSessions> UserSessions { get; set; }
 }
